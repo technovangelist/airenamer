@@ -1,4 +1,13 @@
-## 0.0.3 (2024-01-06)
+## [0.0.4](https://github.com/technovangelist/airenamer/compare/v0.0.3...v0.0.4) (2024-01-06)
+
+
+### Bug Fixes
+
+* add the right permissions ([49d9b51](https://github.com/technovangelist/airenamer/commit/49d9b519db6bcdb4776585b661ea1114a6a2e4aa))
+
+
+
+## [0.0.3](https://github.com/technovangelist/airenamer/compare/68576a401113e1d293e2da54195ec60dada20d2f...v0.0.3) (2024-01-06)
 
 
 ### Bug Fixes
