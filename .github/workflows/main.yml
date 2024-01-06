@@ -32,7 +32,7 @@ jobs:
         with: 
           deno-version: 1.37.2
       - run: 
-          deno compile --allow-env --allow-read --allow-run --allow-sys --allow-net --target ${{ matrix.target.target }} --output ${{ matrix.target.file}} main.ts
+          deno compile --allow-write --allow-read --allow-net --target ${{ matrix.target.target }} --output ${{ matrix.target.file}} main.ts
   
       - name: Release
         uses: softprops/action-gh-release@v1
