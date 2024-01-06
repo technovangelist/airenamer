@@ -2,7 +2,7 @@ import { Base64 } from "https://deno.land/x/bb64@1.1.0/mod.ts";
 
 export async function getkeywords(image: string): Promise<string[]> {
   const body = {
-    "model": "llava:13b-v1.5-q5_K_M",
+    "model": "llava:13b",
     "format": "json",
     "prompt": `Describe the image as a collection of keywords. Output in JSON format. Use the following schema: { filename: string, keywords: string[] }`,
     "images": [image],
