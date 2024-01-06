@@ -1,0 +1,50 @@
+name: Deno Compile
+on:
+  push:
+    branches:
+      - main
+      
+jobs:
+  changelog:
+    runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ steps.changelog.outputs.tag }}
+      skipped: ${{ steps.changelog.outputs.skipped }}
+      output: ${{steps.changelog.outputs.clean_changelog}}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Conventional Changelog
+        id: changelog
+        uses: TriPSs/conventional-changelog-action@v4.1.1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      
+  compile:
+    strategy:
+      matrix: 
+        target: [{target: x86_64-unknown-linux-gnu, file: linux-airenamer}, {target: x86_64-pc-windows-msvc, file: win-airenamer.exe}, {target: x86_64-apple-darwin, file: macos-x86-airenamer}, {target: aarch64-apple-darwin, file: macos-arm64-airenamer}]
+    runs-on: ubuntu-latest
+    needs: changelog
+    if: ${{ needs.changelog.outputs.skipped == 'false' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: denoland/setup-deno@v1
+        with: 
+          deno-version: 1.37.2
+      - run: 
+          deno compile --allow-env --allow-read --allow-run --allow-sys --allow-net --target ${{ matrix.target.target }} --output ${{ matrix.target.file}} main.ts
+  
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: ${{ needs.changelog.outputs.skipped == 'false' }}
+        with:
+          tag_name: ${{ needs.changelog.outputs.tag }}
+          name: ${{ needs.changelog.outputs.tag }}
+          body: ${{ needs.changelog.outputs.output }}
+          files: |
+            linux-airenamer
+            win-airenamer.exe
+            macos-x86-airenamer
+            macos-arm64-airenamer
+            
+          token: ${{ secrets.GITHUB_TOKEN }}
