@@ -1,5 +1,7 @@
 # AI Image File Renamer
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/W4Bn73JHPZs?si=kXrZdI-SqthGYMKQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 A simple executable that renames image files based on keywords that describe the image. The keywords are generated using [Ollama.ai](https://ollama.ai). You must have Ollama installed first.
 
 ## Installation
