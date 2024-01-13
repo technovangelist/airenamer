@@ -18,3 +18,21 @@ A simple executable that renames image files based on keywords that describe the
 Navigate to a folder with some images in it and run `airenamer`.
 
 Make sure you have a backup first. It only copies the files, but I'm not responsible for any data loss.
+This is useful when you have Ollama running on remote host and you want to use different model.
+
+### Arguments
+
+You can override the default Ollama API endpoint address and model by passing in arguments when calling the tool.
+
+| Argument   | Description                                              | Default value                       |
+| ---------- | -------------------------------------------------------- | -----------------------------      |
+| `base_url` | The base URL for the Ollama API endpoint.                | `http://localhost:11434`           |
+| `model`    | The Ollama model to use for generating image descriptions.| `llmva:13b`                        |
+
+To override default values when calling the tool, you can use the following example:
+
+```
+airenamer http://192.168.1.100:11434 bakllava:7b
+```
+
+
