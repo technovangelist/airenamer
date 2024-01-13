@@ -27,7 +27,7 @@ You can override the default Ollama API endpoint address and model by passing in
 | Argument   | Description                                              | Default value                       |
 | ---------- | -------------------------------------------------------- | -----------------------------      |
 | `base_url` | The base URL for the Ollama API endpoint.                | `http://localhost:11434`           |
-| `model`    | The Ollama model to use for generating image descriptions.| `llmva:13b`                        |
+| `model`    | The Ollama model to use for generating image descriptions.| `llava:13b`                        |
 
 To override default values when calling the tool, you can use the following example:
 
