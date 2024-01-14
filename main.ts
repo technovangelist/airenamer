@@ -1,5 +1,5 @@
 import { Base64 } from "https://deno.land/x/bb64@1.1.0/mod.ts";
-import * as fs from "node:fs";
+import { existsSync } from "https://deno.land/std@0.212.0/fs/exists.ts";
 
 const ollama_baseurl = Deno.args[0] || 'http://localhost:11434';
 const ollama_model = Deno.args[1] || 'llava:13b';
@@ -39,8 +39,8 @@ if (import.meta.main) {
   const currentpath = Deno.cwd();
   const newDir = "./ai-renamed";
 
-  if (!fs.existsSync(newDir)) {
-    fs.mkdirSync(newDir);
+  if (!existsSync(newDir)) {
+    await Deno.mkdir(newDir);
   }
 
   for (const file of Deno.readDirSync(".")) {
