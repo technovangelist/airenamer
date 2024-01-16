@@ -26,5 +26,5 @@ This is useful when you have Ollama running on remote host and you want to use d
 
 | Variable               | Description                                                                                            | Example Value                          | Default Value              |
 |------------------------|-----------------------------------------------------------------------------------------------|--------------------------------------|---------------------------|
-| `OLLAMA_BASE_URL`      | The base URL of the Ollama API that our application should connect to.                           | `http://your-ollama-server-url:12345`               | `http://localhost:11434`          |
-| `OLLAMA_MODEL`         | The model that our application should use for text generation.                                | `bakllava:13b`                           | `llava:13b`          |
+| `OLLAMA_BASE_URL`      | The base URL of the Ollama API that application connecting to.                           | `http://your-ollama-server-url:12345`               | `http://localhost:11434`          |
+| `OLLAMA_MODEL`         | The model that application is going to use for filename generation.                                | `bakllava:13b`                           | `llava:13b`          |
