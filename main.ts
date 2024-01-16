@@ -1,8 +1,8 @@
 import { Base64 } from "https://deno.land/x/bb64@1.1.0/mod.ts";
 import { existsSync } from "https://deno.land/std@0.212.0/fs/exists.ts";
 
-const ollama_baseurl = Deno.args[0] || 'http://localhost:11434';
-const ollama_model = Deno.args[1] || 'llava:13b';
+const ollama_baseurl = Deno.env.get("OLLAMA_BASE_URL") || 'http://localhost:11434';
+const ollama_model = Deno.env.get("OLLAMA_MODEL") || 'llava:13b';
 
 console.log("Using Ollama API: " + ollama_baseurl + "/api/generate");
 
