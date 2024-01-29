@@ -7,7 +7,7 @@ A simple executable that renames image files based on keywords that describe the
 
 ## Installation
 
-1. Find the latest release for your OS [here](https://github.com/technovangelist/obm/releases/latest/)
+1. Find the latest release for your OS [here](https://github.com/technovangelist/airenamer/releases/latest/)
 2. Rename it to something memorable, like airenamer (or airenamer.exe on Windows).
 3. Ensure it is executable. On Linux or Mac, run `chmod +x airenamer`.
 4. Move the file somewhere into your path.
