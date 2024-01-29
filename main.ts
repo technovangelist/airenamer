@@ -17,15 +17,27 @@ export async function getkeywords(image: string): Promise<string[]> {
     body: JSON.stringify(body),
   });
 
-  const json = await response.json();
-  const keywords = JSON.parse(json.response);
+  if (response.status !== 200) {
+    console.log(`Error: ${response.status}: ${response.statusText}`);
+    return [];
+  } else {
+    const json = await response.json();
+    const keywords = JSON.parse(json.response);
+    return keywords?.keywords || [];
+  }
 
-  return keywords?.keywords || [];
 }
 
 function createFileName(keywords: string[], fileext: string): string {
-  const fileparts = keywords.map(k => k.replace(/ /g, "_"));
-  const newfilename = fileparts.join("-") + "." + fileext;
+  let newfilename = "";
+  if (keywords.length > 0) {
+    const fileparts = keywords.map(k => k.replace(/ /g, "_"));
+    const filteredWords = fileparts.filter(w => {
+      const cl = newfilename.length + w.length;
+      return cl <= 230
+    })
+    newfilename = filteredWords.join("-") + "." + fileext;
+  }
   return newfilename;
 }
 
