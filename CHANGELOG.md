@@ -1,3 +1,12 @@
+## [0.0.5](https://github.com/technovangelist/airenamer/compare/v0.0.4...v0.0.5) (2024-01-29)
+
+
+### Bug Fixes
+
+* error handling for no json plus for when file name too long ([e58993f](https://github.com/technovangelist/airenamer/commit/e58993f956a8e353c6545ba60945909754c86bdb))
+
+
+
 ## [0.0.4](https://github.com/technovangelist/airenamer/compare/v0.0.3...v0.0.4) (2024-01-06)
 
 
