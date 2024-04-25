@@ -1,3 +1,13 @@
+## [0.0.8](https://github.com/technovangelist/airenamer/compare/v0.0.6...v0.0.8) (2024-04-25)
+
+
+### Bug Fixes
+
+* force pull llava ([dea263c](https://github.com/technovangelist/airenamer/commit/dea263c2cfb01d24bb64954653bd89e86ec6efa2))
+* vedsion number ([95fd1d4](https://github.com/technovangelist/airenamer/commit/95fd1d4b6357424655907ee0a69a875990c46083))
+
+
+
 ## [0.0.6](https://github.com/technovangelist/airenamer/compare/v0.0.5...v0.0.6) (2024-01-29)
 
 
