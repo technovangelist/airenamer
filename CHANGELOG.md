@@ -1,3 +1,12 @@
+## [0.0.6](https://github.com/technovangelist/airenamer/compare/v0.0.5...v0.0.6) (2024-01-29)
+
+
+### Bug Fixes
+
+* bad link in the readme ([5a07ebb](https://github.com/technovangelist/airenamer/commit/5a07ebb16d0f208a178379bbbd719ce2f016db0e))
+
+
+
 ## [0.0.5](https://github.com/technovangelist/airenamer/compare/v0.0.4...v0.0.5) (2024-01-29)
 
 
