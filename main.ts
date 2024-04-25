@@ -1,4 +1,5 @@
 import { Base64 } from "https://deno.land/x/bb64@1.1.0/mod.ts";
+import ollama from "npm:ollama";
 
 export async function getkeywords(image: string): Promise<string[]> {
   const body = {
@@ -28,12 +29,13 @@ export async function getkeywords(image: string): Promise<string[]> {
 
 }
 
-function createFileName(keywords: string[], fileext: string): string {
+export function createFileName(keywords: string[], fileext: string): string {
   let newfilename = "";
   if (keywords.length > 0) {
     const fileparts = keywords.map(k => k.replace(/ /g, "_"));
+    let cl = 0
     const filteredWords = fileparts.filter(w => {
-      const cl = newfilename.length + w.length;
+      cl = cl + w.length + 1;
       return cl <= 230
     })
     newfilename = filteredWords.join("-") + "." + fileext;
@@ -41,16 +43,23 @@ function createFileName(keywords: string[], fileext: string): string {
   return newfilename;
 }
 
-if (import.meta.main) {
-  const currentpath = Deno.cwd();
-  for (const file of Deno.readDirSync(".")) {
-    if (file.name.endsWith(".jpg") || file.name.endsWith(".png")) {
-      const b64 = Base64.fromFile(`${currentpath}/${file.name}`).toString();
-      const keywords = await getkeywords(b64);
-      const newfilename = createFileName(keywords, file.name.split(".").pop()!);
-      Deno.copyFileSync(`${currentpath}/${file.name}`, `${currentpath}/${newfilename}`);
 
-      console.log(`Copied ${file.name} to ${newfilename}`);
-    }
+if (import.meta.main) {
+await ollama.pull({model: "llava:13b"});
+const currentpath = Deno.cwd();
+for (const file of Deno.readDirSync(".")) {
+  if (file.name.endsWith(".jpg") || file.name.endsWith(".jpeg") || file.name.endsWith(".png")) {
+
+    const b64 = Base64.fromFile(`${currentpath}/${file.name}`).toString();
+    Base64
+    const keywords = await getkeywords(b64);
+    const newfilename = createFileName(keywords, file.name.split(".").pop()!);
+    Deno.copyFileSync(`${currentpath}/${file.name}`, `${currentpath}/${newfilename}`);
+
+    console.log(`Copied ${file.name} to ${newfilename}`);
+  } else {
+    console.log(`Skipping ${file.name}`);
   }
 }
+}
+
